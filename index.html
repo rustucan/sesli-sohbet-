@@ -3,41 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesli Sohbet | Giriş Yap</title>
+    <title>Sesli Sohbet | Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
-        :root { --bg: #0f1015; --card: #1a1c23; --primary: #7289da; --accent: #5865f2; --text: #ffffff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        
-        .auth-card { background: var(--card); padding: 40px; border-radius: 20px; width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); }
-        h2 { text-align: center; margin-bottom: 25px; color: var(--primary); }
-        
-        .input-group { position: relative; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #333; background: #0f1015; color: white; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 8px rgba(114, 137, 218, 0.3); }
-        
-        /* Şifre Gözü İkonu */
-        .password-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; font-size: 20px; }
-        
-        .btn { width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .btn:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
-        
-        .google-btn { background: white; color: #000; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; }
-        .google-btn img { width: 20px; }
+        :root {
+            --bg: #050507;
+            --card: rgba(20, 21, 28, 0.9);
+            --primary: #7289da;
+            --accent: #5865f2;
+            --text: #ffffff;
+            --glow: rgba(114, 137, 218, 0.4);
+        }
 
-        .switch-text { text-align: center; margin-top: 20px; font-size: 0.9rem; color: #b9bbbe; }
-        .switch-text span { color: var(--primary); cursor: pointer; text-decoration: underline; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
 
-        .kvkk { font-size: 0.75rem; color: #888; display: flex; align-items: flex-start; gap: 8px; margin-top: 15px; text-align: left; }
-        .kvkk input { width: auto; margin-top: 3px; }
+        /* Animasyonlu Arka Plan */
+        .bg-animate {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #050507 0%, #0b0c14 100%);
+            z-index: -1;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--glow);
+            filter: blur(80px);
+            animation: move 20s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes move {
+            from { transform: translate(-20%, -20%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Daha Küçük ve Zarif Kart */
+        .auth-card {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 320px; /* Kutuyu küçülttük */
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            transition: 0.4s;
+        }
+
+        h2 { text-align: center; margin-bottom: 20px; font-size: 1.5rem; color: var(--primary); letter-spacing: 1px; }
+
+        .input-group { position: relative; margin-bottom: 15px; }
+        
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); box-shadow: 0 0 5px var(--glow); }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 15px var(--glow); }
+
+        .google-btn {
+            background: #fff;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .google-btn img { width: 16px; }
+
+        .switch-text { text-align: center; margin-top: 15px; font-size: 0.8rem; color: #b9bbbe; }
+        .switch-text span { color: var(--primary); cursor: pointer; font-weight: bold; }
+
+        .kvkk {
+            font-size: 0.7rem;
+            color: #777;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+        
+        .kvkk input { width: auto; margin-top: 2px; }
 
         .hidden { display: none; }
     </style>
 </head>
 <body>
 
+    <div class="bg-animate">
+        <div class="circle" style="width: 300px; height: 300px; top: 10%; left: 10%;"></div>
+        <div class="circle" style="width: 250px; height: 250px; bottom: 10%; right: 10%; background: rgba(145, 70, 255, 0.3);"></div>
+    </div>
+
     <div id="login-form" class="auth-card">
-        <h2>Giriş Yap</h2>
+        <h2>GİRİŞ YAP</h2>
         <div class="input-group">
             <input type="email" placeholder="E-posta" required>
         </div>
@@ -49,14 +159,14 @@
         
         <button class="btn google-btn">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
-            Google ile Giriş Yap
+            Google ile Giriş
         </button>
 
         <p class="switch-text">Hesabın yok mu? <span onclick="toggleAuth()">Üye Ol</span></p>
     </div>
 
     <div id="register-form" class="auth-card hidden">
-        <h2>Hesap Oluştur</h2>
+        <h2>KAYIT OL</h2>
         <div class="input-group">
             <input type="email" placeholder="E-posta" required>
         </div>
@@ -65,12 +175,12 @@
             <span class="material-symbols-outlined password-toggle" onclick="togglePass('reg-pass')">visibility</span>
         </div>
         <div class="input-group">
-            <input type="password" id="reg-pass-confirm" placeholder="Şifre Onayı" required>
+            <input type="password" id="reg-pass-confirm" placeholder="Şifre Tekrar" required>
         </div>
         
         <div class="kvkk">
             <input type="checkbox" id="kvkk-check">
-            <label for="kvkk-check">KVKK metnini ve kullanım koşullarını okudum, onaylıyorum.</label>
+            <label for="kvkk-check">KVKK metnini ve kullanım koşullarını onaylıyorum.</label>
         </div>
 
         <button class="btn">Hesap Oluştur</button>
@@ -84,13 +194,11 @@
     </div>
 
     <script>
-        // Formlar arası geçiş
         function toggleAuth() {
             document.getElementById('login-form').classList.toggle('hidden');
             document.getElementById('register-form').classList.toggle('hidden');
         }
 
-        // Şifre Göster/Gizle
         function togglePass(id) {
             const input = document.getElementById(id);
             const icon = event.target;
