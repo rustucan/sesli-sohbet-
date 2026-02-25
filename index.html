@@ -1,13 +1,31 @@
+cat <<EOF > index.html
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Sesli Sohbet</title>
-<style>body{background:#0f0f12; color:#fff; text-align:center; font-family:sans-serif; padding-top:100px;} .btn{background:#5865F2; color:white; padding:15px; border-radius:8px; text-decoration:none;}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesli Sohbet | Oyuncu Dünyası</title>
+    <style>
+        :root { --bg: #0f1015; --primary: #7289da; --accent: #5865f2; --text: #ffffff; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        .container { text-align: center; padding: 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(90deg, #7289da, #9146ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: #b9bbbe; font-size: 1.1rem; }
+        .status { display: inline-block; padding: 5px 15px; border-radius: 20px; background: rgba(255, 165, 0, 0.2); color: orange; font-size: 0.8rem; margin-bottom: 20px; border: 1px solid orange; }
+        .btn-group { margin-top: 30px; }
+        .btn { background: var(--primary); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent); }
+    </style>
 </head>
 <body>
-<h1>Sesli Sohbet Yakında!</h1>
-<p>Oyuncular burada buluşuyor.</p>
-<br><br>
-<a href="#" class="btn">Başlamak İçin Tıkla</a>
+    <div class="container">
+        <div class="status">Geliştirme Aşamasında</div>
+        <h1>Sesli Sohbet</h1>
+        <p>Oyuncular ve arkadaşlar için yeni nesil sesli iletişim platformu.</p>
+        <div class="btn-group">
+            <a href="#" class="btn">Lobilere Göz At</a>
+        </div>
+    </div>
 </body>
 </html>
+EOF
