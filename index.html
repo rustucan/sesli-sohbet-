@@ -3,214 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesli Sohbet | Login</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Sohbet | Mini</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
     <style>
         :root {
             --bg: #050507;
-            --card: rgba(15, 16, 22, 0.95);
+            --card: rgba(15, 16, 22, 0.98);
             --primary: #7289da;
-            --accent: #5865f2;
             --text: #ffffff;
-            --glow: rgba(114, 137, 218, 0.3);
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            font-family: 'Segoe UI', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
+            margin: 0; background: var(--bg); font-family: sans-serif;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 100vh; overflow: hidden;
         }
 
-        /* Arka Plan Animasyonu */
-        .bg-animate {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+        /* Animasyonlu Arka Plan */
+        .bg-glow {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
         }
-
         .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: var(--glow);
-            filter: blur(60px);
-            animation: move 15s infinite alternate;
+            position: absolute; border-radius: 50%; background: rgba(114, 137, 218, 0.2);
+            filter: blur(40px); animation: move 10s infinite alternate;
         }
+        @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(10%, 10%); } }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(10%, 10%); }
-        }
-
-        /* Minimal Küçük Kart */
+        /* Mikro Kutu - 100px */
         .auth-card {
             background: var(--card);
-            padding: 20px 25px; /* Boşluklar daraltıldı */
-            border-radius: 12px;
-            width: 180px; /* Kutu daha da küçültüldü */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(10px);
+            padding: 10px 8px;
+            border-radius: 8px;
+            width: 100px; /* İstediğin ölçü */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
         }
 
-        h2 { 
-            text-align: center; 
-            margin: 0 0 15px 0; 
-            font-size: 1.2rem; /* Başlık küçültüldü */
-            color: var(--primary); 
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+        h2 { font-size: 0.6rem; margin: 0 0 8px 0; color: var(--primary); text-transform: uppercase; }
 
-        .input-group { position: relative; margin-bottom: 12px; }
+        .input-group { position: relative; margin-bottom: 5px; }
         
         input {
             width: 100%;
-            padding: 8px 10px;
-            border-radius: 5px;
+            padding: 4px 5px;
+            border-radius: 3px;
             border: 1px solid #2a2a2a;
-            background: rgba(0, 0, 0, 0.4);
+            background: #000;
             color: white;
             box-sizing: border-box;
             outline: none;
-            font-size: 0.85rem; /* Yazı boyutu küçültüldü */
+            font-size: 0.5rem; /* Yazılar iyice küçüldü */
         }
 
-        input:focus { border-color: var(--primary); }
-
         .password-toggle {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666;
-            font-size: 16px;
+            position: absolute; right: 3px; top: 50%;
+            transform: translateY(-50%); cursor: pointer;
+            font-size: 10px; color: #555;
         }
 
         .btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            padding: 8px;
-            border-radius: 5px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.85rem;
-            margin-top: 5px;
+            width: 100%; background: var(--primary); color: white;
+            padding: 4px; border-radius: 3px; border: none;
+            font-weight: bold; cursor: pointer; font-size: 0.5rem;
+            margin-top: 3px;
         }
-
-        .btn:hover { background: var(--accent); box-shadow: 0 0 10px var(--glow); }
 
         .google-btn {
-            background: #fff;
-            color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 10px;
+            background: #fff; color: #000; display: flex;
+            align-items: center; justify-content: center; gap: 3px; margin-top: 5px;
         }
+        .google-btn img { width: 8px; }
 
-        .google-btn img { width: 14px; }
+        .switch-text { margin-top: 8px; font-size: 0.45rem; color: #8e9297; }
+        .switch-text span { color: var(--primary); cursor: pointer; font-weight: bold; }
 
-        .switch-text { text-align: center; margin-top: 12px; font-size: 0.75rem; color: #8e9297; }
-        .switch-text span { color: var(--primary); cursor: pointer; text-decoration: none; font-weight: bold; }
-        .switch-text span:hover { text-decoration: underline; }
-
-        .kvkk {
-            font-size: 0.65rem;
-            color: #666;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin: 8px 0;
-        }
-        
-        .kvkk input { width: auto; margin: 0; }
+        .kvkk { font-size: 0.35rem; color: #555; display: flex; align-items: center; gap: 2px; margin: 4px 0; }
+        .kvkk input { width: auto; height: 6px; width: 6px; }
 
         .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="bg-animate">
-        <div class="circle" style="width: 200px; height: 200px; top: 15%; left: 15%;"></div>
-        <div class="circle" style="width: 180px; height: 180px; bottom: 15%; right: 15%; background: rgba(145, 70, 255, 0.2);"></div>
+    <div class="bg-glow">
+        <div class="circle" style="width: 100px; height: 100px; top: 20%; left: 20%;"></div>
     </div>
 
     <div id="login-form" class="auth-card">
         <h2>Giriş</h2>
         <div class="input-group">
-            <input type="email" placeholder="E-posta" required>
+            <input type="email" placeholder="E-posta">
         </div>
         <div class="input-group">
-            <input type="password" id="login-pass" placeholder="Şifre" required>
-            <span class="material-symbols-outlined password-toggle" onclick="togglePass('login-pass')">visibility</span>
+            <input type="password" id="l-p" placeholder="Şifre">
+            <span class="material-symbols-outlined password-toggle" onclick="togglePass('l-p')">visibility</span>
         </div>
-        <button class="btn">Giriş Yap</button>
-        
-        <button class="btn google-btn">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
-            Google
-        </button>
-
-        <p class="switch-text">Hesabın yok mu? <span onclick="toggleAuth()">Üye Ol</span></p>
+        <button class="btn">Giriş</button>
+        <button class="btn google-btn"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"> Google</button>
+        <p class="switch-text"><span onclick="toggleAuth()">Üye Ol</span></p>
     </div>
 
     <div id="register-form" class="auth-card hidden">
-        <h2>Kayıt Ol</h2>
+        <h2>Kayıt</h2>
+        <div class="input-group"><input type="email" placeholder="E-posta"></div>
         <div class="input-group">
-            <input type="email" placeholder="E-posta" required>
+            <input type="password" id="r-p" placeholder="Şifre">
+            <span class="material-symbols-outlined password-toggle" onclick="togglePass('r-p')">visibility</span>
         </div>
-        <div class="input-group">
-            <input type="password" id="reg-pass" placeholder="Şifre" required>
-            <span class="material-symbols-outlined password-toggle" onclick="togglePass('reg-pass')">visibility</span>
-        </div>
-        <div class="input-group">
-            <input type="password" id="reg-pass-confirm" placeholder="Onay" required>
-        </div>
-        
         <div class="kvkk">
-            <input type="checkbox" id="kvkk-check">
-            <label for="kvkk-check">KVKK'yı onaylıyorum.</label>
+            <input type="checkbox" id="k"> <label for="k">KVKK Onay</label>
         </div>
-
-        <button class="btn">Hesap Oluştur</button>
-        
-        <button class="btn google-btn">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G">
-            Google ile Kaydol
-        </button>
-
-        <p class="switch-text">Üye misin? <span onclick="toggleAuth()">Giriş Yap</span></p>
-    </div>
-
-    <script>
-        function toggleAuth() {
-            document.getElementById('login-form').classList.toggle('hidden');
-            document.getElementById('register-form').classList.toggle('hidden');
-        }
-
-        function togglePass(id) {
-            const input = document.getElementById(id);
-            const icon = event.target;
-            if (input.type === "password") {
-                input.type = "text";
-                icon.innerText = "visibility_off";
-            } else {
-                input.type = "password";
-                icon.innerText = "visibility";
-            }
-        }
-    </script>
-</body>
-</html>
+        <button class="btn">Kur
